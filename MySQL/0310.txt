@@ -1,0 +1,19 @@
+- 데이터 베이스 선택 명령어
+USE '데이터베이스이름';
+
+#ALTER (해당 계정이 alter 권한을 가지고 있어야한다)
+*데이터베이스의 전체적인 특징 변경
+ALTER DATABASE [DB명] CHARACTER SET=[문자 셋 이름];
+ALTER DATABASE [DB명] COLLATE = [콜레이션 이름];
+
+#콜레이션(Collation)?
+데이터베이스에서 검색이나 정렬과 같은 작업을 할 때 사용하는 비교를 위한 규칙의 집합
+
+e.g ) 정렬방식 변경 (utf8mb4 -> utf8)
+ALTER DATABASE mydb COLLATE=utf8_general_ci;
+ALTER DATABASE mydb CHARACTER SET = utf8 COLLATE = utf8_general_ci;
+
+*테이블 구조 변경
+-추가 (ADD)
+ALTER TABLE '테이블명' ADD '필드명 필드타입';
+e.g) ALTER TABLE 
