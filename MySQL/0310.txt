@@ -16,4 +16,4 @@ ALTER DATABASE mydb CHARACTER SET = utf8 COLLATE = utf8_general_ci;
 *테이블 구조 변경
 -추가 (ADD)
 ALTER TABLE '테이블명' ADD '필드명 필드타입';
-e.g) ALTER TABLE 
+ 

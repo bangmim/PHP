@@ -1,0 +1,43 @@
+# 데이터 조작문
+
+*insert
+insert into [table명( 필드이름1, 2, ...)] values [(데이터1,2,...)];
+insert into [table명] values [(데이터1,2,...)];
+
+// 생략할 수 있는 필드
+1. null 저장할 수 있도록 설정된 필드
+2. default 제약 조건이 설정된 필드
+3. auto_increment 키워드가 설정된 필드
+
+*alter
+alter table ~ add [name type]; (테이블 추가)
+alter table ~ drop [] ;
+            ~ modify column[name type]; 
+
+*테이블 이동
+rename table [databaseName.tableName] to [NewDatabaseName.NewTableName];
+
+*update
+set절에 수정할 필드와 새로 넣을 데이터 값을 기술하고, where 절은 업데이트할 레코드를 확인하는 조건을 기술
+where절이 없다면 모든 레코드의 해당 필드가 업데이트 되며,
+orderby 절이 지정되어 있다면 지정 순서대로 업데이트 된다.
+limit은 업데이트될 수 있는 레코드 수에 제한을 둘 수 있다.
+
+update [table명]
+set [필드이름=데이터값], [필드이름1=데이터값1],...
+where [필드이름=데이터값];
+
+*delete
+orderby와 limit 사용할 수 없다.
+delete from [table명];
+delete from [table명] where [필드이름=데이터값];
+
+//where 절이 없는 delete 문은 모든 레코드를 삭제한다.
+이를 조금 더 빨리 하기 위해 truncate table문을 사용할 수 있다.
+전체 테이블을 비우거나 삭제되는 레코드의 수를 알 필요가 없는 경우 사용된다.
+
+*replace : delete 후 insert 한다.
+사용에는 편리하지만 남용하게되면 처리 속도가 느려진다.
+레코드가 삭제 + 입력되는 과정에서 인덱스가 갱신되는데, 인덱스 값과 전혀 관계없는 다른 필드들의 데이터 몇 개를 업데이트하기 위해 replace 키워드를 사용하면 쓸데없는 비용이 낭비된다.
+
+# 테이블의 레코드를 모두 삭제할 경우에는 delete 문보다 truncate를 사용하는 것이 효과적이다.

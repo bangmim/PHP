@@ -1,0 +1,18 @@
+RDB (relational data base) 관계형 데이터 베이스
+
+#Join
+-작성하기 위해 외래키가 적어도 하나 이상 있어야 한다
+-on에 조건절
+-where에 조건절 가능
+
+#서브쿼리 : 
+
+SELECT * FROM `movie_director` 
+where id = (select director_id from movie_list where title like '%씨%'); //친절한 금자씨, 아가씨 총 2개
+#1242 - Subquery returns more than 1 row
+->> 결과가 한 개의 행 보다 많으면 오류가 발생한다.
+
+여러 값을 비교하고 싶으면 where 절 뒤에 in 키워드를 추가하여 쿼리를 사용해야 한다.
+
+SELECT * FROM `movie_director` 
+where id in (select director_id from movie_list where title like '%씨%');   //박찬욱

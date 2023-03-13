@@ -1,0 +1,37 @@
+# 테이블 이동
+rename table [DB명.table명] to [옮길 DB명.table명];
+
+# 인덱스 만들기
+(1)create문
+create index [인덱스명] on [테이블명 필드명];
+create unique index [인덱스명] on [테이블명 필드명];
+
+// 인덱스 여러개 만들 때
+create index [인덱스명]on [테이블명 필드이름1,2,...];
+
+// 인덱스 확인
+show index from [테이블명]
+
+// 인덱스 종류
+-primary
+-index
+-unique
+-fulltext : like '%문자열%' 과 비슷한 형태의 검색 결과를 얻을 수 있고, 텍스트에 최적화된 인덱싱 방식
+-foreign key
+
+(2)alter문
+alter table [table명] add index[index명 필드이름];
+
+# 인덱스 삭제
+(1)drop문
+drop index [index명] on [table명];
+(2)alter문
+alter table [table명] drop index [index명];
+
+# 테이블 만들 때(create) 속성 값에 문자열 입력시 ``로 감싼다.
+  데이터 입력할 때 (insert into) 문자열 입력시 ''로 감싼다.
+
+# 주석
+#     //한줄
+--    //한줄
+/**/  //여러줄

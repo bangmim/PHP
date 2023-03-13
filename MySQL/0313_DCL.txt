@@ -1,0 +1,41 @@
+#crate user
+
+create user [계정이름]@[localhost] identified by [패스워드];    // 로컬환경에서만 접속 가능 계정 추가
+create user [계정이름]@[%] identified by [패스워드];            // 외부 접근이 가능한 계정 추가
+create user [계정이름]@[111.111.111.111] identified by [패스워드];  //해당 IP주소에서만 접근 가능
+
+
+#drop user계정 삭제
+
+drop user [계정이름];
+delete from user where user='[계정이름]';   //user 테이블에서 계정 이름을 찾기 때문에 문자열을 꼭 따옴표('')로 감싸야한다.
+
+#grant
+grant [권한]                // all privileges, select, insert, ...
+on [데이터베이스명.테이블명]
+to [계정이름@호스트]
+identified by [비밀번호]
+with grant option;      //연대 권한이 주어진다.
+
+// 권한 확인
+show grants for [계정이름@호스트];
+
+#revoke
+revoke [권한]                // all privileges, select, insert, ...
+on [데이터베이스명.테이블명]
+from [계정이름@호스트]
+identified by [비밀번호]
+with grant option;  
+
+#rename user
+rename user [기존 계정이름@호스트] to [변경할 계정이름 @호스트];
+
+#set password   //update권한 필요
+set password [for 계정이름@호스트]=password('[변경할 패스워드]');
+=
+update mysql.user
+set password = password('1111')
+where user='my_user' and host='localhost';
+
+//mysql의 사용자 계정 정보는 기본 데이터 베이스 'mysql'에 저장된다.
+그렇기에 update 문을 사용할 경우 해당 데이터베이스를 직접 입력하거나 해당 데이터베이스 사용을 선택 후 알맞은 조건을 입력하여 사용해야 한다.
