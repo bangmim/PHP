@@ -1,0 +1,18 @@
+슈퍼 글로벌 변수 $_FILE에 오류코드를 함께 반환하도록 되어있다.
+오류코드는 $_FILES['속성키']['error']의 형태로 액세스하여 확인 가능하다.
+
+#오류코드표 (정상도 오류코드로 표현된다.)
+오류값		오류코드		설명
+0		UPLOAD_ERR_OK		업로드 정상 완료
+1		UPLOAD_ERR_INI_SIZE	php.ini에 설정된 최대 파일크기 초과
+2		UPLOAD_ERR_FORM_SIZE	HTML 폼에 설정된 최대 파일크기 초과
+3		UPLOAD_ERR_PARTIAL	파일의 일부만 업로드됨
+4		UPLOAD_ERR_NO_FILE	업로드할 파일이 없음
+6		UPLOAD_ERR_NO_TMP_DIR	웹서버에 임시폴더가 없음
+7		UPLOAD_ERR_CANT_WRITE	웹서버에 파일을 쓸 수 없음
+8		UPLOAD_ERR_EXTENSION	PHP 확장 기능에 의한 업로드 중단
+
+#파일 업로드 에러 디버깅
+1. 임시 파일이 업로드 되었는지 확인한다.
+2. 파일을 업로드 하려는 대상 디렉터리가 존재하며 사용 권한이 올바른지 확인해본다
+3. move_uploaded_file()함수를 올바르게 사용했는지 확인한다.
