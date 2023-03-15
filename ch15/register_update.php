@@ -74,31 +74,31 @@ if($mode=="insert"){
     // sql=" '' "   
     //sql문이 길어서 주의! 큰따옴표 안에는 작은따옴표로 사용하기
     $sql = " INSERT INTO member
-    SET mb_id = '$mb_id',
-        mb_password = '$mb_password',
-        mb_name = '$mb_name',
-        mb_email = '$mb_email',
-        mb_job = '$mb_job',
-        mb_gender = '$mb_gender',
-        mb_language = '$mb_language',
-        mb_datetime = '$mb_datetime' ";
-$result = mysqli_query($conn, $sql);
+                SET mb_id = '$mb_id',
+                    mb_password = '$mb_password',
+                    mb_name = '$mb_name',
+                    mb_email = '$mb_email',
+                    mb_job = '$mb_job',
+                    mb_gender = '$mb_gender',
+                    mb_language = '$mb_language',
+                    mb_datetime = '$mb_datetime' ";
+    $result = mysqli_query($conn, $sql);
 
 } else if ($mode == "modify") { // 회원 수정 모드
 
-$sql = " UPDATE member
-    SET mb_password = '$mb_password',
-        mb_email = '$mb_email',
-        mb_job = '$mb_job',
-        mb_gender = '$mb_gender',
-        mb_language = '$mb_language'
- WHERE mb_id = '$mb_id' ";
-$result = mysqli_query($conn, $sql);
+    $sql = " UPDATE member
+                SET mb_password = '$mb_password',
+                    mb_email = '$mb_email',
+                    mb_job = '$mb_job',
+                    mb_gender = '$mb_gender',
+                    mb_language = '$mb_language'
+                WHERE mb_id = '$mb_id' ";
+    $result = mysqli_query($conn, $sql);
 }
 
 if($result){
-    echo "<script>alert('".$title."이 완료 되었습니다.');</script>";
-    echo "<script>location.replace('./member_list.php');";
+    echo "<script>alert('".$title."이 완료 되었습니다.')</script>";
+    echo "<script>location.replace('./member_list.php')</script>;";
     exit;
 }else{
     echo "생성 실패: ".mysqli_error($conn);

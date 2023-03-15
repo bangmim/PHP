@@ -23,10 +23,10 @@ $row=mysqli_fetch_assoc($result);
 $password=$row['pass'];
 
 // 존재하는 아이디인지, 입력한 패스워드가 저장된 패스워드와 동일한지 체크
-if(!$mb['mb_id']||!($password==$mb['mb_password'])){    //$mb 변수값을 출력
+if(!$mb['mb_id']||!($password=$mb['mb_password'])){    //$mb 변수값을 출력
     // e.g) mb['mb_name']>name 출력.
     echo "<script>alert('가입된 회원 아이디가 아니거나 비밀번호가 다릅니다.\\n 비밀번호는 대소문자를 구분합니다.');</script>";
-    echo "<script>location.replace(./index.php');</script>";
+    echo "<script>location.replace('./index.php');</script>";
     exit;
 }
 
